@@ -1,5 +1,5 @@
 #!/usr/bin/env groovy
 
-def call(String cmd){
-bat label: '', script: '${cmd}'
+def call(){
+bat label: '', script: 'mvn clean install'
 }
