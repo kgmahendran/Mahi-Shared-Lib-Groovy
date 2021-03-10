@@ -2,7 +2,7 @@
 
 def call (Map getval) {
 	rtUpload (
-		serverId: 'getval.ARTIFACTORY_NAME',
+		serverId: '${getval.ARTIFACTORY_NAME}',
 			spec: '''{
 				"files": [
 					{
