@@ -1,6 +1,6 @@
 #!/usr/bin/env groovy
 
-def artifactory_call () {
+def call () {
 				rtUpload (
 					serverId: 'central',
 					spec: '''{
