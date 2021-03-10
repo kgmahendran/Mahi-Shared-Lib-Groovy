@@ -1,11 +1,11 @@
 #!/usr/bin/env groovy
 
-def call(Map getval) {
+def call(Map stageParams) {
 
     checkout([
         $class: 'GitSCM',
-        branches: [[name:  getval.branch ]],
-        userRemoteConfigs: [[ url: getval.url ]]
+        branches: [[name:  stageParams.branch ]],
+        userRemoteConfigs: [[ url: stageParams.url ]]
 		credentialsId: '12afdeaa-e9f3-4be8-bc17-64ccba068dbe'
     ])
   }
