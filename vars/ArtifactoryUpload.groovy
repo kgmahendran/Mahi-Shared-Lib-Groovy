@@ -1,8 +1,8 @@
 #!/usr/bin/env groovy
 
-def call (Map getval) {
+def artifactory_call (Map getval) {
 	rtUpload (
-		serverId: '${getval.ARTIFACTORY_NAME}',
+		serverId: getval.ARTIFACTORY_NAME,
 			spec: '''{
 				"files": [
 					{
@@ -11,6 +11,6 @@ def call (Map getval) {
 				}
 			]
 		}''',
-	buildName: 'getval.JOB_NAME'
+	buildName: getval.JOB_NAME
 	)
 }
