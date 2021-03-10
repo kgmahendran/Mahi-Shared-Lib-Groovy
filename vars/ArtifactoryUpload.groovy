@@ -1,6 +1,6 @@
 #!/usr/bin/env groovy
 
-def artifactory_call (String ARTIFACTORY_NAME, String REPO_NAME, String JOB_NAME, int  BUILD_NUMBER) {
+def call (String ARTIFACTORY_NAME, String REPO_NAME, String JOB_NAME, int  BUILD_NUMBER) {
 	rtUpload (
 		serverId: ${ARTIFACTORY_NAME},
 			spec: '''{
