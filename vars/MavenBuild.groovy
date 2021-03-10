@@ -1,5 +1,5 @@
 #!/usr/bin/env groovy
 
-def call(Map cmd){
-bat label: '', script: 'Maven.cmd'
+def call(String cmd){
+bat label: '', script: '${cmd}'
 }
