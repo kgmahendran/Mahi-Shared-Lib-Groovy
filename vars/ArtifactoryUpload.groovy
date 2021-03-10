@@ -1,16 +1,16 @@
 #!/usr/bin/env groovy
 
-def artifactory_call (Map getval) {
+def artifactory_call (String ARTIFACTORY_NAME, String REPO_NAME, String JOB_NAME, int  BUILD_NUMBER) {
 	rtUpload (
-		serverId: getval.ARTIFACTORY_NAME,
+		serverId: ${ARTIFACTORY_NAME},
 			spec: '''{
 				"files": [
 					{
 					"pattern": "target/*.war",
-					"target": "getval.REPO_NAME/getval.JOB_NAME/getval.BUILD_NUMBER/"
+					"target": "${REPO_NAME}/${JOB_NAME}/${BUILD_NUMBER}/"
 				}
 			]
 		}''',
-	buildName: getval.JOB_NAME
+	buildName: ${JOB_NAME}
 	)
 }
