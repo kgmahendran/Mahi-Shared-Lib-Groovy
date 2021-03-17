@@ -9,6 +9,7 @@ println CSVfilecontent.text
 
 println "############  List ################"
 
+def excelFormat = CSVFormat.EXCEL
 def records = readCSV file: 'D:/Demo-Pipeline/CSV-Jenkins/input.csv' , format: excelFormat
 
 
