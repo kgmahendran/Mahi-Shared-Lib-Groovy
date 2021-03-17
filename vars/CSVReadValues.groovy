@@ -12,6 +12,6 @@ println "############  List ################"
 def records = readCSV file: 'D:/Demo-Pipeline/CSV-Jenkins/input.csv'
 
 
-println $records.get(0)
+println "$records.get('AppID')"
 
 }
