@@ -11,8 +11,7 @@ println "############  List ################"
 
 def records = readCSV file: 'D:/Demo-Pipeline/CSV-Jenkins/input.csv'
 
-def recordMap=records.toMap()
-println "$recordMap"
-println "############ ################"
-println "$recordMap.get('AppID')"
+def Arrayvalues=records as String[]
+println "# $Arrayvalues #"
+
 }
