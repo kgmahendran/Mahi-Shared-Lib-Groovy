@@ -11,7 +11,6 @@ println "############  List ################"
 
 def records = readCSV file: 'D:/Demo-Pipeline/CSV-Jenkins/input.csv'
 
-def Arrayvalues=records as String[]
-println "# $Arrayvalues #"
 
+println "$records"
 }
