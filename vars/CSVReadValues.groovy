@@ -16,7 +16,5 @@ println "$records"
 
 println "-----------------------------------------"
 
-records.eachLine { everyline ->
-println " # : $everyline #"
-}
+println "records.getRecordNumber(2)"
 }
