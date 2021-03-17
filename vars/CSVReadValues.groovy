@@ -9,17 +9,13 @@ println CSVfilecontent.text
 
 println "############  List ################"
 
-def excelFormat = CSVFormat.EXCEL
-def records = readCSV file: 'D:/Demo-Pipeline/CSV-Jenkins/input.csv' , format: excelFormat
+def records = readCSV file: 'D:/Demo-Pipeline/CSV-Jenkins/input.csv' 
 
 
 println "$records"
 
 println "-----------------------------------------"
 
-def record0= records[0].CSVRecord 
-def record1= records[1].CSVRecord 
-
+def record0= records['CSVRecord']
 println "$record0"
-println "$record1"
 }
