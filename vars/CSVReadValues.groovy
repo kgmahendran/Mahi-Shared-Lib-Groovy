@@ -9,18 +9,10 @@ println CSVfilecontent.text
 
 println "############  List ################"
 
+def records = readCSV file: 'D:/Demo-Pipeline/CSV-Jenkins/input.csv'
 
-
-	Reader in = new FileReader("D:/Demo-Pipeline/CSV-Jenkins/input.csv");
-    Iterable<CSVRecord> records = CSVFormat.DEFAULT
-      .withHeader(HEADERS)
-      .withFirstRecordAsHeader()
-      .parse(in);
-    for (CSVRecord record : records) {
-        String author = record.get("AppID");
-        String title = record.get("AppName");
-		println $author 
-		println $title 
-    }
-
+def recordMap=records.toMap()
+println "$recordMap"
+println "############ ################"
+println "$recordMap.get('AppID')"
 }
