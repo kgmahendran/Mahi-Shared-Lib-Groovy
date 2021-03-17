@@ -16,6 +16,7 @@ println "$records"
 
 println "-----------------------------------------"
 
-def record0= records['CSVRecord']
-println "$record0"
+records.eachLine { everyline ->
+println " # : $everyline #"
+}
 }
