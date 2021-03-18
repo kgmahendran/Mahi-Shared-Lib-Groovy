@@ -1,3 +1,4 @@
+void  call() {
 import java.io.BufferedReader
 import java.util.function.Function
 import java.util.regex.Pattern
@@ -56,7 +57,6 @@ class BuildDetails {
 	}
 }
 
-def call() {
 
 def BuildDet = new BuildDetails()
 String header = "App ID,App Name,Release Version,Environments Passed,Environment Failed,Comments";
