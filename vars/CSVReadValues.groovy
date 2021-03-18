@@ -11,7 +11,7 @@ println "############  List ################"
 
 String[][] records=readCSV file: 'D:/Demo-Pipeline/CSV-Jenkins/input.csv', text: ''
 
-println records
+println "$records"
 
 }
 
