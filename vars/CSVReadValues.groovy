@@ -21,10 +21,10 @@ class BuildDetails {
 		this.releaseVersion = releaseVersion;
 		this.status = status;
 	}
-	def getAppId() {
+	int getAppId() {
 		return appId;
 	}
-	def setAppId(int appId) {
+	void setAppId(int appId) {
 		this.appId = appId;
 	}
 	def  getAppName() {
