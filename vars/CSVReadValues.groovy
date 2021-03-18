@@ -5,7 +5,7 @@ import java.util.stream.Collectors
 import java.util.*
 import java.io.*
 import java.util.List
-@NonCPS
+
 
 class BuildDetails {
 	def appId;
@@ -58,7 +58,7 @@ class BuildDetails {
 	}
 }
 
-
+@NonCPS
 def call() {
 def BuildDet = new BuildDetails()
 String header = "App ID,App Name,Release Version,Environments Passed,Environment Failed,Comments";
