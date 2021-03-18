@@ -3,7 +3,7 @@ import java.util.function.Function
 import java.util.regex.Pattern
 import java.util.stream.Collectors
 
-def call() {
+
 
 class BuildDetails {
 	def appId;
@@ -56,6 +56,7 @@ class BuildDetails {
 	}
 }
 
+def call() {
 
 def BuildDet = new BuildDetails()
 String header = "App ID,App Name,Release Version,Environments Passed,Environment Failed,Comments";
