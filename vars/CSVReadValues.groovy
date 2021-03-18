@@ -8,7 +8,7 @@ File CSVfilecontent=new File(csvfilepath)
 println CSVfilecontent.text
 
 println "############  List ################"
-
+def in
 Reader in = new FileReader("D:/Demo-Pipeline/CSV-Jenkins/input.csv");
 Iterable<CSVRecord> records = CSVFormat.DEFAULT.parse(in);
 for (CSVRecord record : records) {
