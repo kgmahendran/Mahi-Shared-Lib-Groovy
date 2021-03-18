@@ -7,7 +7,7 @@ def call()
 {
 
 
-class BuildDetails {
+def BuildDetails {
 	def appId;
 	def appName;
 	def environment;
