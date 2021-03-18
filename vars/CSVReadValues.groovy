@@ -6,7 +6,7 @@ import java.util.stream.Collectors
 import java.util.*
 import java.io.*
 import java.util.List
-
+@NonCPS
 def call() {
 
 
