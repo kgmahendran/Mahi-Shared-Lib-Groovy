@@ -2,7 +2,7 @@ def call()
 {
 
 CSVFormat csvFormat = CSVFormat.DEFAULT.withHeader();
-try (CSVParser csvParser = csvFormat.parse(Files.newBufferedReader(Paths.get("D:\\Demo-Pipeline\\CSV-Jenkins\\Input.csv")))) {
+CSVParser csvParser = csvFormat.parse(Files.newBufferedReader(Paths.get("D:/Demo-Pipeline/CSV-Jenkins/Input.csv"))) 
     System.out.println(csvParser.getHeaderNames());
     for (CSVRecord csvRecord : csvParser) {
         System.out.println(csvRecord);
@@ -13,6 +13,6 @@ try (CSVParser csvParser = csvFormat.parse(Files.newBufferedReader(Paths.get("D:
             map.putIfAbsent(name, "");
         System.out.println("  Values  : " + map);
     }
-}
+
 
 }
