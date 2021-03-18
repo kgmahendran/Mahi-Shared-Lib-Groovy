@@ -57,7 +57,6 @@ class BuildDetails {
 	}
 }
 
-def call() {
 
 def BuildDet = new BuildDetails()
 String header = "App ID,App Name,Release Version,Environments Passed,Environment Failed,Comments";
@@ -120,7 +119,6 @@ finally {
 	writer.close();
 }
 
-}
 
 
 
