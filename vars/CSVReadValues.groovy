@@ -61,8 +61,8 @@ class BuildDetails {
 String header = "App ID,App Name,Release Version,Environments Passed,Environment Failed,Comments";
 Pattern pattern = Pattern.compile(",");
 
-BufferedReader in = new BufferedReader(new FileReader("D:\\Demo-Pipeline\\CSV-Jenkins\\Input.csv"));
-List<BuildDetails> buildStatus = in.lines().skip(1).map(m -> {
+BufferedReader filecontent = new BufferedReader(new FileReader("D:\\Demo-Pipeline\\CSV-Jenkins\\Input.csv"));
+List<BuildDetails> buildStatus = filecontent.lines().skip(1).map(m -> {
 	String[] x = pattern.split(m);
 	println "${x[0]}, ${x[1]}, ${x[2]}, ${x[3]}, ${x[4]}"
 	return new BuildDetails(Integer.parseInt(x[0]), x[1], x[2], x[3], x[4]);
