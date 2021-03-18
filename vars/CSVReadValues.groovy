@@ -2,7 +2,9 @@ def call()
 {
 
 
+
 import java.io.BufferedReader;
+import java.util.function.Function
 import java.util.regex.Pattern
 import java.util.stream.Collectors
 
@@ -71,7 +73,7 @@ List<BuildDetails> buildStatus = filecontent.lines().skip(1).map({m ->
 StringBuilder sb = new StringBuilder();
 sb.append(header);
 Map<String, List<BuildDetails>> buildStatusMap = buildStatus.stream()
-.collect(Collectors.groupingBy(BuildDetails::groupBy));
+.collect(Collectors.groupingBy(BuildDetails.&groupBy as Function));
 for (Map.Entry<String, List<BuildDetails>> entry : buildStatusMap.entrySet()) {
 	System.out.println(entry.getKey());
 	List<BuildDetails> buildList = entry.getValue();
@@ -104,17 +106,20 @@ for (Map.Entry<String, List<BuildDetails>> entry : buildStatusMap.entrySet()) {
 
 
 }
-
-try (PrintWriter writer = new PrintWriter(new File("D:\\Demo-Pipeline\\CSV-Jenkins\\test.csv"))) {
-
+PrintWriter writer;
+try {
+	writer = new PrintWriter(new File("D:\\Demo-Pipeline\\CSV-Jenkins\\test.csv")) 
 	writer.write(sb.toString());
-
 	System.out.println("done!");
 
-} catch (FileNotFoundException e) {
-	System.out.println(e.getMessage());
 }
 
+catch (FileNotFoundException e) {
+	System.out.println(e.getMessage());
+}
+finally {
+	writer.close();
+}
 
 
 
