@@ -3,7 +3,7 @@ def call()
 
 
 
-import java.io.BufferedReader;
+import java.io.BufferedReader
 import java.util.function.Function
 import java.util.regex.Pattern
 import java.util.stream.Collectors
