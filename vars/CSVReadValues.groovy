@@ -3,17 +3,15 @@ import java.util.function.Function
 import java.util.regex.Pattern
 import java.util.stream.Collectors
 
-def call()
-{
+def call() {
 
-
-def BuildDetails {
+class BuildDetails {
 	def appId;
 	def appName;
 	def environment;
 	def releaseVersion;
 	def status;
-
+    BuildDetails(){}
 	BuildDetails(def appId, def appName, def environment, def releaseVersion, def status) {
 		super();
 		this.appId = appId;
@@ -58,11 +56,13 @@ def BuildDetails {
 	}
 }
 
+
+def BuildDet = new BuildDetails()
 String header = "App ID,App Name,Release Version,Environments Passed,Environment Failed,Comments";
 Pattern pattern = Pattern.compile(",");
 
 BufferedReader filecontent = new BufferedReader(new FileReader("D:\\Demo-Pipeline\\CSV-Jenkins\\Input.csv"));
-List<BuildDetails> buildStatus = filecontent.lines().skip(1).map({m -> 
+List<BuildDetails> buildStatus = filecontent.lines().skip(1).map({m ->
 				String[] x = pattern.split(m);
 				println "${x[0]}, ${x[1]}, ${x[2]}, ${x[3]}, ${x[4]}"
 				return new BuildDetails(Integer.parseInt(x[0]), x[1], x[2], x[3], x[4]);
@@ -105,7 +105,7 @@ for (Map.Entry<String, List<BuildDetails>> entry : buildStatusMap.entrySet()) {
 }
 PrintWriter writer;
 try {
-	writer = new PrintWriter(new File("D:\\Demo-Pipeline\\CSV-Jenkins\\test.csv")) 
+	writer = new PrintWriter(new File("D:\\Demo-Pipeline\\CSV-Jenkins\\test.csv"))
 	writer.write(sb.toString());
 	System.out.println("done!");
 
@@ -118,8 +118,19 @@ finally {
 	writer.close();
 }
 
-
-
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
