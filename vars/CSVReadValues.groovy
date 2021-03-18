@@ -8,19 +8,14 @@ File CSVfilecontent=new File(csvfilepath)
 println CSVfilecontent.text
 
 println "############  List ################"
-def in
-Reader in = new FileReader("D:/Demo-Pipeline/CSV-Jenkins/input.csv");
-Iterable<CSVRecord> records = CSVFormat.DEFAULT.parse(in);
-for (CSVRecord record : records) {
-    String columnOne = record.get(0);
-    String columnTwo = record.get(1);
-	String columnThree = record.get(2);
-	String columnFour= record.get(3);
-	String columnFive = record.get(4);
-}
 
-println "$record.get(0)"
+def records=readCSV file: 'D:/Demo-Pipeline/CSV-Jenkins/input.csv', text: ''
 
+    for (CSVRecord record : records) {
+        for (int i = 0; i < record.size(); i++) {
+            System.out.println("At " + i + ": " + record.get(i));
+        }
+    }
 
 }
 
