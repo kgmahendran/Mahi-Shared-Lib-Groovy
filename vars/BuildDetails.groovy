@@ -4,7 +4,6 @@ class BuildDetails {
 	def environment;
 	def releaseVersion;
 	def status;
-	 BuildDetails(){}
 	BuildDetails(def appId, def appName, def environment, def releaseVersion, def status) {
 		super();
 		this.appId = appId;
