@@ -1,6 +1,7 @@
 def call()
 {
 
+
 import java.io.BufferedReader;
 import java.util.regex.Pattern
 import java.util.stream.Collectors
@@ -62,12 +63,11 @@ String header = "App ID,App Name,Release Version,Environments Passed,Environment
 Pattern pattern = Pattern.compile(",");
 
 BufferedReader filecontent = new BufferedReader(new FileReader("D:\\Demo-Pipeline\\CSV-Jenkins\\Input.csv"));
-List<BuildDetails> buildStatus = filecontent.lines().skip(1).map(m -> {
-	String[] x = pattern.split(m);
-	println "${x[0]}, ${x[1]}, ${x[2]}, ${x[3]}, ${x[4]}"
-	return new BuildDetails(Integer.parseInt(x[0]), x[1], x[2], x[3], x[4]);
-}).collect(Collectors.toList());
-
+List<BuildDetails> buildStatus = filecontent.lines().skip(1).map({m -> {
+				String[] x = pattern.split(m);
+				println "${x[0]}, ${x[1]}, ${x[2]}, ${x[3]}, ${x[4]}"
+				return new BuildDetails(Integer.parseInt(x[0]), x[1], x[2], x[3], x[4]);
+			}}).collect(Collectors.toList());
 StringBuilder sb = new StringBuilder();
 sb.append(header);
 Map<String, List<BuildDetails>> buildStatusMap = buildStatus.stream()
@@ -76,21 +76,21 @@ for (Map.Entry<String, List<BuildDetails>> entry : buildStatusMap.entrySet()) {
 	System.out.println(entry.getKey());
 	List<BuildDetails> buildList = entry.getValue();
 	//System.out.println(entry.getValue());
-	List<BuildDetails> failedList = buildList.stream().filter(f -> f.getStatus().contains("Failed"))
+	List<BuildDetails> failedList = buildList.stream().filter({f -> f.getStatus().contains("Failed")})
 	.collect(Collectors.toList());
-	List<BuildDetails> passedList = buildList.stream().filter(f -> !f.getStatus().contains("Failed"))
+	List<BuildDetails> passedList = buildList.stream().filter({f -> !f.getStatus().contains("Failed")})
 	.collect(Collectors.toList());
 	String delimitter = ",";
 	String passedEnvList = "NA";
 	String failedEnvList = "NA";
 	String comments = "NA";
 	if (passedList != null && passedList.size() > 0) {
-		passedEnvList = passedList.stream().map(mp -> mp.getEnvironment()).collect(Collectors.joining("|"));
+		passedEnvList = passedList.stream().map({mp -> mp.getEnvironment()}).collect(Collectors.joining("|"));
 		//comments = passedList.stream().map(mp -> mp.getStatus()).collect(Collectors.joining("|"));
 		comments="Passed";
 	}
 	if (failedList != null && failedList.size() > 0) {
-		failedEnvList = failedList.stream().map(mp -> mp.getStatus()).collect(Collectors.joining("|"));
+		failedEnvList = failedList.stream().map({mp -> mp.getStatus()}).collect(Collectors.joining("|"));
 		//comments = failedList.stream().map(mp -> mp.getStatus()).collect(Collectors.joining("|"));
 		comments="Failed";
 	}
@@ -114,6 +114,7 @@ try (PrintWriter writer = new PrintWriter(new File("D:\\Demo-Pipeline\\CSV-Jenki
 } catch (FileNotFoundException e) {
 	System.out.println(e.getMessage());
 }
+
 
 
 
