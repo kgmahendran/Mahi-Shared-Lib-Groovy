@@ -4,6 +4,7 @@ import java.util.regex.Pattern
 import java.util.stream.Collectors
 import java.util.*
 import java.io.*
+import java.util.List
 
 class BuildDetails {
 	def appId;
