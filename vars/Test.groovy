@@ -1,22 +1,13 @@
-import com.opencsv.*
-import com.opencsv.CSVParser
-
+import org.apache.commons.csv.*
 def call()
 {
 
 
-CSVFormat csvFormat = CSVFormat.DEFAULT.withHeader();
-CSVParser csvParser = csvFormat.parse(Files.newBufferedReader(Paths.get("D:/Demo-Pipeline/CSV-Jenkins/Input.csv"))) 
-    System.out.println(csvParser.getHeaderNames());
-    for (CSVRecord csvRecord : csvParser) {
-        System.out.println(csvRecord);
-        System.out.println("  toMap(): " + csvRecord.toMap());
-
-        Map<String, String> map = csvRecord.toMap();
-        for (String name : csvParser.getHeaderNames())
-            map.putIfAbsent(name, "");
-        System.out.println("  Values  : " + map);
+Reader filereader=new FileReader("D:\\Demo-Pipeline\\CSV-Jenkins\\Input.csv")	
+Iterable<CSVRecord> records = CSVFormat.DEFAULT.parse(filereader);
+    for (CSVRecord csvRecord : records) {
+		def APPID=csvRecord.get(0)
+        println "$APPID"
     }
-
 
 }
