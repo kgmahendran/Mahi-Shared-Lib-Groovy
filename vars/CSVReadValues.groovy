@@ -70,8 +70,10 @@ Pattern pattern = Pattern.compile(",");
 BufferedReader filecontent = new BufferedReader(new FileReader("D:\\Demo-Pipeline\\CSV-Jenkins\\Input.csv"));
 List<BuildDetails> buildStatus = filecontent.lines().skip(1).map({m ->
 				String[] x = pattern.split(m);
-				println "${x[0]}, ${x[1]}, ${x[2]}, ${x[3]}, ${x[4]}"
-				return new BuildDetails(Integer.parseInt(x[0]), x[1], x[2], x[3], x[4],x[5]);
+				printlnln "${x.length}"
+				println "$x"
+				println "${x[0]}, ${x[1]}, ${x[2]}, ${x[3]}, ${x[4], ${x[5]}"
+				return new BuildDetails(Integer.parseInt(x[0]), x[1], x[2], x[3], x[4], X[5]);
 			}).collect(Collectors.toList());
 StringBuilder sb = new StringBuilder();
 sb.append(header);
