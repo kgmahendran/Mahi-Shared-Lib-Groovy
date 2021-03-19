@@ -4,9 +4,8 @@ import java.util.stream.*
 def call()
 {
 
-def BuildDet = new BuildDetails()
 String[] HEADERS = ["AppID","AppName","Environment","ReleaseVersion","Status"]
-
+string header="App ID,App Name,Release Version,Environments Passed,Environment Failed,Comments";
 
 Reader filereader = new FileReader("D:\\Demo-Pipeline\\CSV-Jenkins\\Input.csv");
 Iterable<CSVRecord> records = CSVFormat.DEFAULT
