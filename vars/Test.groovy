@@ -1,6 +1,6 @@
 import org.apache.commons.csv.*
 import java.util.stream.*
-
+@NonCPS
 def call()
 {
 
