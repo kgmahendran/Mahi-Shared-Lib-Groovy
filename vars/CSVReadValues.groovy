@@ -68,7 +68,7 @@ Pattern pattern = Pattern.compile(",");
 
 BufferedReader filecontent = new BufferedReader(new FileReader("D:\\Demo-Pipeline\\CSV-Jenkins\\Input.csv"));
 List<BuildDetails> buildStatus = filecontent.lines().skip(1).map({m ->
-				String[] x = pattern.split(m)+"
+				String[] x = pattern.split(m)
 				println "${x[0]}, ${x[1]}, ${x[2]}, ${x[3]}, ${x[4]}}"
 				return new BuildDetails(Integer.parseInt(x[0]), x[1], x[2], x[3], x[4]);
 			}).collect(Collectors.toList());
