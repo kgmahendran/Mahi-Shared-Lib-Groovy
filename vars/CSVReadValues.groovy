@@ -7,14 +7,14 @@ import java.io.*
 import java.util.List
 
 
-class BuildDetails {
+class BuildDetailsails {
 	def appId;
 	def appName;
 	def environment;
 	def releaseVersion;
 	def status;
-	BuildDetails() {}
-	BuildDetails(def appId, def appName, def environment, def releaseVersion, def status) {
+	BuildDetailsails() {}
+	BuildDetailsails(def appId, def appName, def environment, def releaseVersion, def status) {
 		super();
 		this.appId = appId;
 		this.appName = appName;
@@ -60,27 +60,28 @@ class BuildDetails {
 
 @NonCPS
 def call() {
-def BuildDet = new BuildDetails()
+def buildDetails = new BuildDetails();
+def groupcsvvalues=buildDetails .&groupcsvvalues
 String header = "App ID,App Name,Release Version,Environments Passed,Environment Failed,Comments";
 Pattern pattern = Pattern.compile(",");
 
 BufferedReader filecontent = new BufferedReader(new FileReader("D:\\Demo-Pipeline\\CSV-Jenkins\\Input.csv"));
-List<BuildDet> buildStatus = filecontent.lines().skip(1).map({m ->
+List<BuildDetails> buildStatus = filecontent.lines().skip(1).map({m ->
 				String[] x = pattern.split(m);
 				println "${x[0]}, ${x[1]}, ${x[2]}, ${x[3]}, ${x[4]}"
-				return new BuildDet(Integer.parseInt(x[0]), x[1], x[2], x[3], x[4]);
+				return new BuildDetails(Integer.parseInt(x[0]), x[1], x[2], x[3], x[4]);
 			}).collect(Collectors.toList());
 StringBuilder sb = new StringBuilder();
 sb.append(header);
-Map<String, List<BuildDet>> buildStatusMap = buildStatus.stream()
-.collect(Collectors.groupingBy(BuildDet .&groupcsvvalues as Function));
-for (Map.Entry<String, List<BuildDet>> entry : buildStatusMap.entrySet()) {
+Map<String, List<BuildDetails>> buildStatusMap = buildStatus.stream()
+.collect(Collectors.groupingBy(groupcsvvalues()));
+for (Map.Entry<String, List<BuildDetails>> entry : buildStatusMap.entrySet()) {
 	System.out.println(entry.getKey());
-	List<BuildDet> buildList = entry.getValue();
+	List<BuildDetails> buildList = entry.getValue();
 	//System.out.println(entry.getValue());
-	List<BuildDet> failedList = buildList.stream().filter({f -> f.getStatus().contains("Failed")})
+	List<BuildDetails> failedList = buildList.stream().filter({f -> f.getStatus().contains("Failed")})
 	.collect(Collectors.toList());
-	List<BuildDet> passedList = buildList.stream().filter({f -> !f.getStatus().contains("Failed")})
+	List<BuildDetails> passedList = buildList.stream().filter({f -> !f.getStatus().contains("Failed")})
 	.collect(Collectors.toList());
 	String delimitter = ",";
 	String passedEnvList = "NA";
