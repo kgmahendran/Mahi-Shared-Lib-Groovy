@@ -23,5 +23,5 @@ Map<String, List<CSVRecord>> recordListBySK =   StreamSupport
 for (Map.Entry<String, List<CSVRecord>> entry : recordListBySK.entrySet()) {
 	System.out.println(entry.getKey());
 
-
+}
 }
