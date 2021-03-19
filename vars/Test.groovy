@@ -73,8 +73,6 @@ Map<String, List<CSVRecord>> recordListBySK =   StreamSupport
 		collect(Collectors.groupingBy(BuildDetails.&getCsvfilterval as Function);
 		
 
-recordListBySK.each { key,value ->
-		println "$key : $value"
 }
 
 }
