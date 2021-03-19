@@ -71,7 +71,7 @@ BufferedReader filecontent = new BufferedReader(new FileReader("D:\\Demo-Pipelin
 List<BuildDetails> buildStatus = filecontent.lines().skip(1).map({m ->
 				String[] x = pattern.split(m);
 				println "${x[0]}, ${x[1]}, ${x[2]}, ${x[3]}, ${x[4]}"
-				return new BuildDetails(Integer.parseInt(x[0]), x[1], x[2], x[3], x[4]);
+				return new BuildDetails(Integer.parseInt(x[0]), x[1], x[2], x[3], x[4],x[5]);
 			}).collect(Collectors.toList());
 StringBuilder sb = new StringBuilder();
 sb.append(header);
