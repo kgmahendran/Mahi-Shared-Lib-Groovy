@@ -20,8 +20,8 @@ Map<String, List<CSVRecord>> recordListBySK =   StreamSupport
 		collect(Collectors.groupingBy({record -> record.get("AppID"),record.get("ReleaseVersion")} ));
 		
 
-for (Map.Entry<String, List<CSVRecord>> entry : recordListBySK.entrySet()) {
-	println "${entry.getKey()}"
-
+recordListBySK.each { key,value ->
+		println "$key : $value"
 }
+
 }
