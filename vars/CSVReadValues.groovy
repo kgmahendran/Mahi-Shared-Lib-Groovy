@@ -53,7 +53,7 @@ class BuildDetails {
 		this.status = status;
 	}
 
-	def groupBy1() {
+	 def groupcsvvalues() {
 		return getAppId() + "-" + getAppName() + "-" + getReleaseVersion();
 	}
 }
@@ -73,7 +73,7 @@ List<BuildDetails> buildStatus = filecontent.lines().skip(1).map({m ->
 StringBuilder sb = new StringBuilder();
 sb.append(header);
 Map<String, List<BuildDetails>> buildStatusMap = buildStatus.stream()
-.collect(Collectors.groupingBy(BuildDetails .&groupBy1 as Function));
+.collect(Collectors.groupingBy(BuildDetails .&groupcsvvalues as Function));
 for (Map.Entry<String, List<BuildDetails>> entry : buildStatusMap.entrySet()) {
 	System.out.println(entry.getKey());
 	List<BuildDetails> buildList = entry.getValue();
