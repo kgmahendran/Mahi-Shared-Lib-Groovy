@@ -61,7 +61,6 @@ class BuildDetailsails {
 @NonCPS
 def call() {
 def buildDetails = new BuildDetails();
-def groupcsvvalues=buildDetails .&groupcsvvalues
 String header = "App ID,App Name,Release Version,Environments Passed,Environment Failed,Comments";
 Pattern pattern = Pattern.compile(",");
 
@@ -74,7 +73,7 @@ List<BuildDetails> buildStatus = filecontent.lines().skip(1).map({m ->
 StringBuilder sb = new StringBuilder();
 sb.append(header);
 Map<String, List<BuildDetails>> buildStatusMap = buildStatus.stream()
-.collect(Collectors.groupingBy(groupcsvvalues()));
+.collect(Collectors.groupingBy(buildDetails .&groupcsvvalues()));
 for (Map.Entry<String, List<BuildDetails>> entry : buildStatusMap.entrySet()) {
 	System.out.println(entry.getKey());
 	List<BuildDetails> buildList = entry.getValue();
