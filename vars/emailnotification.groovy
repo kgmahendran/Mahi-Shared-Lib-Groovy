@@ -14,5 +14,5 @@ Username :: Mahendran Irusappan
 Regards,
 Mahendran Irusappan
 
-''', subject: '[Jenkins_Pipeline]::[CSV Read] #BuildNumber : $BUILD_NUMBER #Status : $BUILD_STATUS', to: 'mahivalarmathi1@gmail.com,mahendran.irusappan@cognizant.com,narayanan.subramanian4@cognizant.com,aysshaa.jasinthan@cognizant.com,danielsolomon.samueljayasing@cognizant.com'
+''', subject: '[Jenkins_Pipeline]::[CSV Read] #BuildNumber : $BUILD_NUMBER #Status : $BUILD_STATUS', to: 'mahivalarmathi1@gmail.com'
 }
