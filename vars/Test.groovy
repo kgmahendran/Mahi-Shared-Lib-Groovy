@@ -14,6 +14,8 @@ Iterable<CSVRecord> records = CSVFormat.DEFAULT
 		.withFirstRecordAsHeader()
 		.parse(filereader);
 
+StringBuilder sb = new StringBuilder();
+sb.append(header);
 
 Map<String, List<CSVRecord>> recordFiltered =   StreamSupport
 		.stream(records.spliterator(), false).
@@ -31,8 +33,46 @@ for (Map.Entry<String, List<CSVRecord>> entry : recordFiltered.entrySet()) {
 	List<CSVRecord> failedList = buildList.stream().filter({f -> f.get("Status").contains("Failed")})
 	.collect(Collectors.toList());
 	
-	println "$failedList"
+	List<CSVRecord> passedList = buildList.stream().filter({f -> !f.get("Status").contains("Failed")})
+	.collect(Collectors.toList());
+	
+	String delimitter = ",";
+	String passedEnvList = "NA";
+	String failedEnvList = "NA";
+	String comments = "NA";
+	
+	if (passedList != null && passedList.size() > 0) {
+		passedEnvList = passedList.stream().map({mp -> mp.get("Environment")}).collect(Collectors.joining("|"));
+		comments="Passed";
+	}
+	if (failedList != null && failedList.size() > 0) {
+		failedEnvList = failedList.stream().map({mp -> mp.get("Status")}).collect(Collectors.joining("|"));
+		comments="Failed";
+	}
+	
+	sb.append('\n');
+	sb.append(buildList.get(0).get("AppID") + delimitter);
+	sb.append(buildList.get(0).get("AppName") + delimitter);
+	sb.append(buildList.get(0).get("ReleaseVersion") + delimitter);
+	sb.append(passedEnvList + delimitter);
+	sb.append(failedEnvList + delimitter);
+	sb.append(comments + delimitter);	
 
+}
+
+PrintWriter writer;
+try {
+	writer = new PrintWriter(new File("D:\\Demo-Pipeline\\CSV-Jenkins\\test.csv"))
+	writer.write(sb.toString());
+	System.out.println("done!");
+
+}
+
+catch (FileNotFoundException e) {
+	System.out.println(e.getMessage());
+}
+finally {
+	writer.close();
 }
 
 }
