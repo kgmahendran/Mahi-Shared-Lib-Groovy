@@ -17,7 +17,7 @@ Iterable<CSVRecord> records = CSVFormat.DEFAULT
 
 Map<String, List<CSVRecord>> recordListBySK =   StreamSupport
 		.stream(records.spliterator(), false).
-		collect(Collectors.groupingBy({record -> record.get("AppID")} ));
+		collect(Collectors.groupingBy({it.AppID},{it.AppName},{it.ReleaseVersion} ));
 		
 
 recordListBySK.each { key,value ->
