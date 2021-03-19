@@ -26,4 +26,9 @@ Map<String, List<CSVRecord>> recordListBySK =   StreamSupport
 		collect(Collectors.groupingBy({record -> record.get("AppID")} ));
 		
 
+
+for (Map<String, Integer> skMaxMap : recordListBySK.entrySet()) {
+	System.out.println(skMaxMap.getKey());
+}
+
 }
