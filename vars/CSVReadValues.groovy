@@ -13,16 +13,14 @@ class BuildDetails {
 	def environment;
 	def releaseVersion;
 	def status;
-	def csvfilterval;
 	BuildDetails() {}
-	BuildDetails(def appId, def appName, def environment, def releaseVersion, def status, def csvfilterval) {
+	BuildDetails(def appId, def appName, def environment, def releaseVersion, def status) {
 		super();
 		this.appId = appId;
 		this.appName = appName;
 		this.environment = environment;
 		this.releaseVersion = releaseVersion;
 		this.status = status;
-		this.csvfilterval = csvfilterval;
 	}
 	int getAppId() {
 		return appId;
@@ -54,7 +52,8 @@ class BuildDetails {
 	def setStatus(String status) {
 		this.status = status;
 	}
-
+	
+    @Override
 	def getCsvfilterval() {
 		return getAppId() + "-" + getAppName() + "-" + getReleaseVersion();
 	}
@@ -69,9 +68,9 @@ Pattern pattern = Pattern.compile(",");
 
 BufferedReader filecontent = new BufferedReader(new FileReader("D:\\Demo-Pipeline\\CSV-Jenkins\\Input.csv"));
 List<BuildDetails> buildStatus = filecontent.lines().skip(1).map({m ->
-				String[] x = pattern.split(m)+", ";
-				println "${x[0]}, ${x[1]}, ${x[2]}, ${x[3]}, ${x[4]}, ${x[5]}"
-				return new BuildDetails(Integer.parseInt(x[0]), x[1], x[2], x[3], x[4], x[5]);
+				String[] x = pattern.split(m)+"
+				println "${x[0]}, ${x[1]}, ${x[2]}, ${x[3]}, ${x[4]}}"
+				return new BuildDetails(Integer.parseInt(x[0]), x[1], x[2], x[3], x[4]);
 			}).collect(Collectors.toList());
 StringBuilder sb = new StringBuilder();
 sb.append(header);
