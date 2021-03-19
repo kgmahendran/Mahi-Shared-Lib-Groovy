@@ -21,7 +21,7 @@ Map<String, List<CSVRecord>> recordListBySK =   StreamSupport
 		
 
 for (Map.Entry<String, List<CSVRecord>> entry : recordListBySK.entrySet()) {
-	println ${entry.getKey()}
+	println "${entry.getKey()}"
 
 }
 }
