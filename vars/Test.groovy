@@ -5,13 +5,13 @@ def call()
 {
 
 
-String[] HEADERS = [
+String[] HEADERS = {
 	"AppID",
 	"AppName",
 	"Environment",
 	"ReleaseVersion",
 	"Status"
-]
+}
 
 
 Reader filereader = new FileReader("D:\\Demo-Pipeline\\CSV-Jenkins\\Input.csv");
@@ -26,9 +26,7 @@ Map<String, List<CSVRecord>> recordListBySK =   StreamSupport
 		collect(Collectors.groupingBy({record -> record.get("AppID")} ));
 		
 
+println "$recordListBySK"
 
-for (Map<String, Integer> skMaxMap : recordListBySK.entrySet()) {
-	System.out.println(skMaxMap.getKey());
-}
 
 }
