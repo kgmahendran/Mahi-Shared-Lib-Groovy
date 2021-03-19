@@ -53,12 +53,13 @@ class BuildDetails {
 		this.status = status;
 	}
 
-	 def groupcsvvalues() {
+	def groupBy() {
 		return getAppId() + "-" + getAppName() + "-" + getReleaseVersion();
 	}
 }
 
-def buildDetails = new BuildDetails();
+
+def BuildDet = new BuildDetails()
 String header = "App ID,App Name,Release Version,Environments Passed,Environment Failed,Comments";
 Pattern pattern = Pattern.compile(",");
 
@@ -71,7 +72,7 @@ List<BuildDetails> buildStatus = filecontent.lines().skip(1).map({m ->
 StringBuilder sb = new StringBuilder();
 sb.append(header);
 Map<String, List<BuildDetails>> buildStatusMap = buildStatus.stream()
-.collect(Collectors.groupingBy(buildDetails .&groupcsvvalues as Function));
+.collect(Collectors.groupingBy(BuildDetails.&groupBy as Function));
 for (Map.Entry<String, List<BuildDetails>> entry : buildStatusMap.entrySet()) {
 	System.out.println(entry.getKey());
 	List<BuildDetails> buildList = entry.getValue();
@@ -106,7 +107,7 @@ for (Map.Entry<String, List<BuildDetails>> entry : buildStatusMap.entrySet()) {
 }
 PrintWriter writer;
 try {
-	writer = new PrintWriter(new File("C:\\Program Files (x86)\\Jenkins\\workspace\\Pipeline-CSVReader\\Release_Status.csv"))
+	writer = new PrintWriter(new File("D:\\Demo-Pipeline\\Output\\Release_Status.csv"))
 	writer.write(sb.toString());
 	System.out.println("done!");
 
