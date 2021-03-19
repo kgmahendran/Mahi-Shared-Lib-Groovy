@@ -58,7 +58,7 @@ class BuildDetails {
 	}
 }
 
-
+@NonCPS
 def call() {
 
 def BuildDet = new BuildDetails()
