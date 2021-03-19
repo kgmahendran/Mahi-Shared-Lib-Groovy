@@ -7,7 +7,8 @@ def call()
 String[] HEADERS = ["AppID","AppName","Environment","ReleaseVersion","Status"]
 string header="App ID,App Name,Release Version,Environments Passed,Environment Failed,Comments";
 
-Reader filereader = new FileReader("D:\\Demo-Pipeline\\CSV-Jenkins\\Input.csv");
+//Reader filereader = new FileReader("D:\\Demo-Pipeline\\CSV-Jenkins\\Input.csv");
+Reader filereader = new FileReader("$WORKSPACE\\Input.csv");
 Iterable<CSVRecord> records = CSVFormat.DEFAULT
 		.withHeader(HEADERS)
 		.withFirstRecordAsHeader()
@@ -61,7 +62,8 @@ for (Map.Entry<String, List<CSVRecord>> entry : recordFiltered.entrySet()) {
 
 PrintWriter writer;
 try {
-	writer = new PrintWriter(new File("D:\\Demo-Pipeline\\CSV-Jenkins\\test.csv"))
+	//writer = new PrintWriter(new File("D:\\Demo-Pipeline\\CSV-Jenkins\\test.csv"))
+	writer = new PrintWriter(new File("$WORKSPACE\\Release_Status.csv"))
 	writer.write(sb.toString());
 	System.out.println("done!");
 
