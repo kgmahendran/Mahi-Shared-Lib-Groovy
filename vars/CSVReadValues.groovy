@@ -15,13 +15,14 @@ class BuildDetails {
 	def status;
 	def csvfilterval;
 	BuildDetails() {}
-	BuildDetails(def appId, def appName, def environment, def releaseVersion, def status) {
+	BuildDetails(def appId, def appName, def environment, def releaseVersion, def status, def csvfilterval) {
 		super();
 		this.appId = appId;
 		this.appName = appName;
 		this.environment = environment;
 		this.releaseVersion = releaseVersion;
 		this.status = status;
+		this.csvfilterval = csvfilterval;
 	}
 	int getAppId() {
 		return appId;
@@ -54,7 +55,7 @@ class BuildDetails {
 		this.status = status;
 	}
 
-	def csvfilterval() {
+	def getCsvfilterval() {
 		return getAppId() + "-" + getAppName() + "-" + getReleaseVersion();
 	}
 }
@@ -75,7 +76,7 @@ List<BuildDetails> buildStatus = filecontent.lines().skip(1).map({m ->
 StringBuilder sb = new StringBuilder();
 sb.append(header);
 Map<String, List<BuildDetails>> buildStatusMap = buildStatus.stream()
-.collect(Collectors.groupingBy(BuildDetails.&csvfilterval as Function));
+.collect(Collectors.groupingBy(BuildDetails.&getCsvfilterval as Function));
 for (Map.Entry<String, List<BuildDetails>> entry : buildStatusMap.entrySet()) {
 	System.out.println(entry.getKey());
 	List<BuildDetails> buildList = entry.getValue();
@@ -125,6 +126,7 @@ finally {
 
 
 }
+
 
 
 
