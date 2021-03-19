@@ -69,7 +69,7 @@ Pattern pattern = Pattern.compile(",");
 
 BufferedReader filecontent = new BufferedReader(new FileReader("D:\\Demo-Pipeline\\CSV-Jenkins\\Input.csv"));
 List<BuildDetails> buildStatus = filecontent.lines().skip(1).map({m ->
-				String[] x = pattern.split(m);
+				String[] x = pattern.split(m)+", ";
 				println "${"pattern.split(m)          " +pattern.split(m)}"
 				println "${x.length}"
 				println "$x"
