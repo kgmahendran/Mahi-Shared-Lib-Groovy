@@ -13,6 +13,7 @@ class BuildDetails {
 	def environment;
 	def releaseVersion;
 	def status;
+	def csvfilterval;
 	BuildDetails() {}
 	BuildDetails(def appId, def appName, def environment, def releaseVersion, def status) {
 		super();
