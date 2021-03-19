@@ -5,7 +5,7 @@ def call()
 {
 
 
-String[] HEADERS = {"AppID","AppName","Environment","ReleaseVersion","Status"}
+String[] HEADERS = ["AppID","AppName","Environment","ReleaseVersion","Status"]
 
 
 Reader filereader = new FileReader("D:\\Demo-Pipeline\\CSV-Jenkins\\Input.csv");
