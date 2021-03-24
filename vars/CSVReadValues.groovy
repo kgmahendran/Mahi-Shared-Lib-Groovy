@@ -5,7 +5,7 @@ def call()
 {
 
 String[] HEADERS = ["AppID","AppName","Environment","ReleaseVersion","Status"]
-string header="App ID,App Name,Release Version,Environments Passed,Environment Failed,Comments";
+String header="App ID,App Name,Release Version,Environments Passed,Environment Failed,Comments";
 
 //Reader filereader = new FileReader("D:\\Demo-Pipeline\\CSV-Jenkins\\Input.csv");
 Reader filereader = new FileReader("$WORKSPACE\\Input.csv");
@@ -21,13 +21,17 @@ Map<String, List<CSVRecord>> recordFiltered =   StreamSupport
 		.stream(records.spliterator(), false).
 		collect(Collectors.groupingBy({record -> record.get("AppID")+"-"+record.get("AppName")+"-"+record.get("ReleaseVersion")} ));
 		
-
+println("**Read the content and Filterted using #AppID,#AppName and #Release Version**")
+println("-----------------------------------------")
 recordFiltered.each { key,value ->
 		println "$key : $value"
 }
-
+println("-----------------------------------------")
+println("")
+println("")
+println("")
 for (Map.Entry<String, List<CSVRecord>> entry : recordFiltered.entrySet()) {
-	System.out.println(entry.getKey());
+	//System.out.println(entry.getKey());
 	List<CSVRecord> buildList = entry.getValue();
 	
 	List<CSVRecord> failedList = buildList.stream().filter({f -> f.get("Status").contains("Failed")})
@@ -56,7 +60,7 @@ for (Map.Entry<String, List<CSVRecord>> entry : recordFiltered.entrySet()) {
 	sb.append(buildList.get(0).get("ReleaseVersion") + delimitter);
 	sb.append(passedEnvList + delimitter);
 	sb.append(failedEnvList + delimitter);
-	sb.append(comments + delimitter);	
+	sb.append(comments);
 
 }
 
@@ -66,7 +70,9 @@ try {
 	writer = new PrintWriter(new File("$WORKSPACE\\Release_Status.csv"))
 	writer.write(sb.toString());
 	System.out.println("done!");
-
+	println("##########################################")
+	println ("${sb}")
+	println("##########################################")
 }
 
 catch (FileNotFoundException e) {
