@@ -7,7 +7,5 @@ Iterable<CSVRecord> records = CSVFormat.DEFAULT
 		.parse(records_values);
 println "$records"
 println"++++++++++++++++++++++++++++"
-print"$records.get("AppID")"
-println"++++++++++++++++++++++++++++"
-//print"$records.get(0)"
+
 }
