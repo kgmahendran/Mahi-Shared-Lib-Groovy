@@ -1,11 +1,13 @@
 import org.apache.commons.csv.*
-@NonCPS
 def call() {
-def records=readCSV file: 'D:\\Demo-Pipeline\\CSV-Jenkins\\Input.csv'
-Iterable<CSVRecord> records1=CSVFormat.EXCEL.withHeader().parse(records);
-println "$records1"
+def records_values=readCSV file: 'D:\\Demo-Pipeline\\CSV-Jenkins\\Input.csv'
+Iterable<CSVRecord> records = CSVFormat.DEFAULT
+		.withHeader(HEADERS)
+		.withFirstRecordAsHeader()
+		.parse(records_values);
+println "$records"
 println"++++++++++++++++++++++++++++"
-//print"$records.get("AppID")"
+print"$records.get("AppID")"
 println"++++++++++++++++++++++++++++"
-print"$records1.get(0)"
+//print"$records.get(0)"
 }
