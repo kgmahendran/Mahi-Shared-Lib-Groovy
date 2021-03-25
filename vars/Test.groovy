@@ -1,4 +1,5 @@
 import org.apache.commons.csv.*
+@NonCPS
 def call() {
 def records=readCSV file: 'D:\\Demo-Pipeline\\CSV-Jenkins\\Input.csv'
 Iterable<CSVRecord> records1=CSVFormat.EXCEL.withHeader().parse(records);
