@@ -3,9 +3,10 @@ import org.apache.commons.csv.*
 @NonCPS
 def call() {
 
-def CSVcontent = readCSV file: 'Input.csv'
 
-CSVParser parser = CSVFormat.EXCEL.parse(CSVcontent);
+def records = readCSV file: 'D:\\Demo-Pipeline\\CSV-Jenkins' , format: CSVFormat.EXCEL
+
+
 
 //def str=CSVcontent.split(',')
 
