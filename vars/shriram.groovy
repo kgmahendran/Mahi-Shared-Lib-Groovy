@@ -13,13 +13,13 @@ records.each { key,value ->
 
 println "++++++++++++++++++++++++++++++++++++++++"
 
-def result = records.groupBy({it.AppID}, {it.AppName}, {it.ReleaseVersion})
+def result = records.groupBy({it.AppID}+"-"+{it.AppName} + "-"+{it.ReleaseVersion})
 
 println "++++++++++++++++++++++++++++++++++++++++"
 
-result.each { entry ->
-		def FailedList = entry.getValue().findAll.({f -> f.get(Status).contains("Failed")})
-		println $FailedList
+result.each { key,value
+
+println "$key        :       $value"
 }
 
 println "********************************"
