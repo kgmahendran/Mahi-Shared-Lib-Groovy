@@ -28,14 +28,12 @@ for (Map.Entry<String, List<CSVRecord>> entry : result.entrySet()) {
 
 	def  buildList = entry.getValue();
 	def FailedList =  buildList.findAll{it.Status.contains("Failed")}.collect{it.Status}
+	def FFF=FailedList.join('|')
 	
-	println"$FailedList"
+	println"$FFF"
 	
-	if (FailedList != null && failedList.size() > 0) {
-	 def failedEnvList = FailedList.join("|")
-	}
 	
-	println "$failedEnvList"
+	//println "$failedEnvList"
 
 	}
 
