@@ -23,6 +23,7 @@ result.each { key,value ->
 }
 
 	File file = new File("D:\\Demo-Pipeline\\CSV-Jenkins\\output.csv")
+	file.text = ''
 	file.append(Headers)
 
 println "********************************"
