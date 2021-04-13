@@ -2,6 +2,7 @@
 import org.apache.commons.csv.*
 import org.jenkinsci.plugins.*
 import java.util.stream.*
+@NonCPS
 def call() {
 
 
