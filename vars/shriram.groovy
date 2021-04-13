@@ -29,8 +29,8 @@ for (Map.Entry<String, List<CSVRecord>> entry : result.entrySet()) {
 	def  buildList = entry.getValue();
 	def PassedList= buildList.findAll{f -> !f.get("Status").contains("Failed")}.collect{it.Status}
 	def FailedList =  buildList.findAll{it.Status.contains("Failed")}.collect{it.Status}
-	def passedEnvList=NA
-	def failedEnvList=NA
+	def passedEnvList=NA;
+	def failedEnvList=NA;
 if (PassedList != null && PassedList.size() > 0) {
 		passedEnvList = PassedList.get("Environment").join('|')
 	}
