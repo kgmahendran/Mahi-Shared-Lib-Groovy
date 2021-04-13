@@ -1,8 +1,13 @@
 #!/usr/bin/env groovy
 def call() {
 
-def excelFormat = CSVFormat.EXCEL
-def CSVcontent = readCSV file: 'Input.csv', format: excelFormat
+def CSVcontent = readCSV file: 'Input.csv'
 
-println "$CSVcontent"
+CSVParser parser = CSVFormat.EXCEL.parse(CSVcontent);
+
+//def str=CSVcontent.split(',')
+
+//def APPID=str[0]
+
+println "$parser"
   }
