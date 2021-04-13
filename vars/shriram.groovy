@@ -2,7 +2,7 @@
 import org.apache.commons.csv.*
 import org.jenkinsci.plugins.*
 import java.util.stream.*
-@NonCPS
+
 def call() {
 
 
@@ -26,11 +26,12 @@ println "********************************"
 
 for (Map.Entry<String, List<CSVRecord>> entry : result.entrySet()) {
 
-	def FinalList=entry.getKey();
+	List<CSVRecord> buildList = entry.getValue();
 	
-	def FailedList=FinalList.grep({it.Status.contains("Failed")})
+	List<CSVRecord> failedList = buildList.stream().filter({f -> f.get("Status").contains("Failed")})
+	.collect(Collectors.toList());
 	
-	println "$FailedList"
+	println "$failedList"
 	}
 
   }
