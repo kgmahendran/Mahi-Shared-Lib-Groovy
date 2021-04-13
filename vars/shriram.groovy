@@ -56,7 +56,7 @@ for (Map.Entry<String, List<CSVRecord>> entry : result.entrySet()) {
 	//println "+++++++++++++++++++++++++++"
 	
 	File file = new File("D:\\Demo-Pipeline\\CSV-Jenkins\\output.csv")
-	file.append(\n)
+	file.append("\n")
 	file.append(buildList.get(0).get("AppID"))
 	}
 	
