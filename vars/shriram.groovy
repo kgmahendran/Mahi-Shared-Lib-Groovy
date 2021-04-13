@@ -7,5 +7,5 @@ def call() {
 
 def records = readCSV file: 'D:\\Demo-Pipeline\\CSV-Jenkins\\Input.csv' , format: CSVFormat.DEFAULT.withHeader().withFirstRecordAsHeader()
 
-println "$records"
+println $records.get("AppID")
   }
