@@ -30,29 +30,15 @@ def passedEnvList="NA";
 for (Map.Entry<String, List<CSVRecord>> entry : result.entrySet()) {
    
 	def  buildList = entry.getValue();
-	PassedList= buildList.findAll{f -> !f.get("Status").contains("Failed")}.collect{it.Status}
-	FailedList =  buildList.findAll{it.Status.contains("Failed")}.collect{it.Status}
+	PassedList= buildList.findAll{f -> !f.get("Status").contains("Failed")}
+	FailedList =  buildList.findAll{it.Status.contains("Failed")}
 	
-	
-	
-	
-	if (PassedList != null && PassedList.size() > 0) {
-		 passedEnvList = PassedList.each{it.Environment}.join('|')
-		//def passedEnvList = PassedList.map({mp -> mp.get("Environment")}).join("|")
-	}
-	if (FailedList != null && FailedList.size() > 0) {
-	
-		failedEnvList = FailedList.each{it.Environment}.join('|')
-		//def failedEnvList = FailedList.get("Status").join('|')
-		 //def failedEnvList = FailedList.map({mp -> mp.get("Status")}).join("|")
-	}
-	
-	
+	println "---------------------Passed-----------------------------"
 	println"$PassedList"
+	println "---------------------Failed-----------------------------"
 	println "$FailedList"
-	print ln"-----------------------------------------------------"
-	println "$passedEnvList"
-	println "$failedEnvList"
+	
+
 
 	}
 
