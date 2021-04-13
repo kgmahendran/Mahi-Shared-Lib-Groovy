@@ -26,11 +26,9 @@ println "********************************"
 
 for (Map.Entry<String, List<CSVRecord>> entry : result.entrySet()) {
 
-	List<CSVRecord> buildList = entry.getValue();
-	
-	List<CSVRecord> failedList = buildList.stream().filter({f -> f.get("Status").contains("Failed")}).collect(Collectors.toList());
-	
-	//println "$buildList"
+	def  buildList = entry.getValue();
+	println buildList.findAll{it.Status.contains("Failed")}
+
 	}
 
   }
