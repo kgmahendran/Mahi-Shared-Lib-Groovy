@@ -8,7 +8,9 @@ def call() {
 	def Output_Headers="AppID,AppName,ReleaseVersion,EnvironmentsPassed,EnvironmentFailed,Comments"
 	def records = readCSV file: 'Input.csv' , format: CSVFormat.DEFAULT.withHeader().withFirstRecordAsHeader()
 	def result = records.groupBy({record -> record.get("AppID")+"-"+record.get("AppName")+"-"+record.get("ReleaseVersion")})
-
+	records.each { key,value ->
+		println "$key : $value"
+	}
 	File file = new File("output.csv")
 	file.text = ''
 	file.append(Output_Headers)
