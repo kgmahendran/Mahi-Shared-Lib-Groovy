@@ -7,5 +7,5 @@ def call() {
 def records = readCSV file: 'D:\\Demo-Pipeline\\CSV-Jenkins' 
 
 println "$records[0]"
-println "$records[0][0]"
+println "$records.get(0)"
   }
