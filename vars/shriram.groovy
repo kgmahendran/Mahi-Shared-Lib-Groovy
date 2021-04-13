@@ -30,6 +30,8 @@ List<CSVRecord> PassedList;
 List<CSVRecord> FailedList;
 def failedEnvList="NA";
 def passedEnvList="NA";
+def Spliter=","
+def Comments="NA";
 for (Map.Entry<String, List<CSVRecord>> entry : result.entrySet()) {
    
 	def  buildList = entry.getValue();
@@ -43,10 +45,12 @@ for (Map.Entry<String, List<CSVRecord>> entry : result.entrySet()) {
 	if (PassedList != null && PassedList.size() > 0) {
 		 def arrr = PassedList.collect{it.Environment}
 		passedEnvList = arrr.join('|')
+		Comments="Passed";
 	}
 	if (FailedList != null && FailedList.size() > 0) {
 		 def arrr1 = FailedList.collect{it.Environment}
 		failedEnvList = arrr1.join('|')
+		Comments="Failed";
 	}
 
 	
@@ -57,7 +61,7 @@ for (Map.Entry<String, List<CSVRecord>> entry : result.entrySet()) {
 	
 
 	file.append("\n")
-	file.append(buildList.get(0).get("AppID") + (buildList.get(0).get("AppName")))
+	file.append(buildList.get(0).get("AppID") + Spliter + (buildList.get(0).get("AppName")) + Spliter + buildList.get(0).get("ReleaseVersion") + Spliter + passedEnvList + Spliter +failedEnvList + Spliter + Comments)
 	}
 	
 	
