@@ -4,7 +4,7 @@ import org.jenkinsci.plugins.*
 def call() {
 
 
-def records = readCSV file: 'D:\\Demo-Pipeline\\CSV-Jenkins\\Input.csv' , format: CSVFormat.DEFAULT.withHeader()..withFirstRecordAsHeader()
+def records = readCSV file: 'D:\\Demo-Pipeline\\CSV-Jenkins\\Input.csv' , format: CSVFormat.DEFAULT.withHeader().withFirstRecordAsHeader()
 
 println "$records.getrecordNumber(1)"
   }
