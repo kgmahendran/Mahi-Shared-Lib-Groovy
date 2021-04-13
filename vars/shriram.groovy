@@ -23,5 +23,9 @@ result.each { key,value ->
 
 println "********************************"
 
-  
+result.each { entry ->
+		def buildList = entry.getValue();
+		println $buildList
+}
+
   }
