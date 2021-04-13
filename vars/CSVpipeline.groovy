@@ -6,10 +6,10 @@ import java.util.stream.*
 def call() {
 
 	def Output_Headers="AppID,AppName,ReleaseVersion,EnvironmentsPassed,EnvironmentFailed,Comments"
-	def records = readCSV file: 'D:\\Demo-Pipeline\\CSV-Jenkins\\Input.csv' , format: CSVFormat.DEFAULT.withHeader().withFirstRecordAsHeader()
+	def records = readCSV file: '$WORKSPACE\\Input.csv' , format: CSVFormat.DEFAULT.withHeader().withFirstRecordAsHeader()
 	def result = records.groupBy({record -> record.get("AppID")+"-"+record.get("AppName")+"-"+record.get("ReleaseVersion")})
 
-	File file = new File("D:\\Demo-Pipeline\\CSV-Jenkins\\output.csv")
+	File file = new File("$WORKSPACE\\output.csv")
 	file.text = ''
 	file.append(Output_Headers)
 
