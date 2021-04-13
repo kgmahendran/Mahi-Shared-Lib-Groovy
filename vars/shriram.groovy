@@ -25,7 +25,8 @@ println "********************************"
 
 result.each { entry ->
 		def buildList = entry.getValue();
-		println "$buildList"
+		def FailedList=buildList.findAll({f -> f.get(Status).conatins("Failed")})
+		println "$FailedList"
 }
 
   }
