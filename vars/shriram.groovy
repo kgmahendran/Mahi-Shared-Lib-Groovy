@@ -4,13 +4,12 @@ import org.jenkinsci.plugins.*
 def call() {
 
 
-def records = readCSV file: 'D:\\Demo-Pipeline\\CSV-Jenkins' , format: CSVFormat.EXCEL
-
+def records = readCSV file: 'D:\\Demo-Pipeline\\CSV-Jenkins' 
 
 
 //def str=CSVcontent.split(',')
 
 //def APPID=str[0]
 
-println "$parser"
+println "$records"
   }
