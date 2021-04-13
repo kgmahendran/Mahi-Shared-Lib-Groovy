@@ -32,10 +32,10 @@ for (Map.Entry<String, List<CSVRecord>> entry : result.entrySet()) {
 	println"$FailedList"
 	
 	if (FailedList != null && failedList.size() > 0) {
-	def  failedEnvList = failedList.map({mp -> mp.get("Status")}).collect(Collectors.joining("|"));
+	 def failedEnvList = FailedList.join("|")
 	}
 	
-	println $failedEnvList"
+	println "$failedEnvList"
 
 	}
 
