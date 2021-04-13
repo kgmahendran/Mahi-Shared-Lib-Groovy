@@ -1,4 +1,5 @@
 #!/usr/bin/env groovy
+import org.apache.commons.csv.*
 def call() {
 
 def CSVcontent = readCSV file: 'Input.csv'
