@@ -57,7 +57,7 @@ for (Map.Entry<String, List<CSVRecord>> entry : result.entrySet()) {
 	
 
 	file.append("\n")
-	file.append(buildList.get(0).get("AppID") + (buildList.get(0).get("AppName"))
+	file.append(buildList.get(0).get("AppID") + (buildList.get(0).get("AppName")))
 	}
 	
 	
