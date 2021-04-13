@@ -1,6 +1,6 @@
 #!/usr/bin/env groovy
 import org.apache.commons.csv.*
-import jenkins.model.*
+import org.jenkinsci.plugins.*
 def call() {
 
 
