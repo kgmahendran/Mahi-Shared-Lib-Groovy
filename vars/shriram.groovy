@@ -26,7 +26,10 @@ println "********************************"
 for (Map.Entry<String, List<CSVRecord>> entry : result.entrySet()) {
 
 	def FinalList=entry.getKey();
-	println "$FinalList"
+	
+	FailedList=FinalList.findAll({record1 -> record1.get("Status").contains("Failed")})
+	
+	println "$FailedList"
 	}
 
   }
