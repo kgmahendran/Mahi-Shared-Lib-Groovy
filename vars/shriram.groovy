@@ -6,10 +6,6 @@ def call() {
 
 def records = readCSV file: 'D:\\Demo-Pipeline\\CSV-Jenkins' 
 
-
-def str=records.split(',')
-
-def APPID=str[0]
-
-println "$APPID"
+println "$records[0]"
+println "$records[0][0]"
   }
