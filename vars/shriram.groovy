@@ -23,17 +23,36 @@ result.each { key,value ->
 }
 
 println "********************************"
-
+List<CSVRecord> PassedList;
+List<CSVRecord> FailedList;
+def failedEnvList=NA;
+def passedEnvList=NA'
 for (Map.Entry<String, List<CSVRecord>> entry : result.entrySet()) {
-
+   
 	def  buildList = entry.getValue();
-	List<CSVRecord> PassedList= buildList.findAll{f -> !f.get("Status").contains("Failed")}.collect{it.Status}
-	List<CSVRecord> FailedList =  buildList.findAll{it.Status.contains("Failed")}.collect{it.Status}
+	PassedList= buildList.findAll{f -> !f.get("Status").contains("Failed")}.collect{it.Status}
+	FailedList =  buildList.findAll{it.Status.contains("Failed")}.collect{it.Status}
+	
+	
+	
+	
+	if (PassedList != null && PassedList.size() > 0) {
+		 passedEnvList = PassedList.each{it.Environment}.join('|')
+		//def passedEnvList = PassedList.map({mp -> mp.get("Environment")}).join("|")
+	}
+	if (FailedList != null && FailedList.size() > 0) {
+	
+		failedEnvList = FailedList.each{it.Environment}.join('|')
+		//def failedEnvList = FailedList.get("Status").join('|')
+		 //def failedEnvList = FailedList.map({mp -> mp.get("Status")}).join("|")
+	}
+	
 	
 	println"$PassedList"
 	println "$FailedList"
-	
-	//println "$failedEnvList"
+	print ln"-----------------------------------------------------"
+	println "$passedEnvList"
+	println "$failedEnvList"
 
 	}
 
