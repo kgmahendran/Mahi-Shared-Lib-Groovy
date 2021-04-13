@@ -25,7 +25,7 @@ println "********************************"
 
 result.each { entry ->
 		def buildList = entry.getValue();
-		println $buildList
+		println "$buildList"
 }
 
   }
