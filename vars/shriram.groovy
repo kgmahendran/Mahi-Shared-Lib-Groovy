@@ -24,7 +24,7 @@ result.each { key,value ->
 println "********************************"
 
 for (Map.Entry<String, List<CSVRecord>> entry : result.entrySet()) {
-	System.out.println(entry.getKey());
+	println "$(entry.getKey())"
 	}
 
   }
