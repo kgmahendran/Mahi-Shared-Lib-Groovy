@@ -5,12 +5,10 @@ import java.util.stream.*
 
 def call() {
 
-	def Output_Headers="AppID,AppName,ReleaseVersion,EnvironmentsPassed,EnvironmentFailed,Comments"
 	def records = readCSV file: 'Input.csv' , format: CSVFormat.DEFAULT.withHeader().withFirstRecordAsHeader()
 	def result = records.groupBy({record -> record.get("AppID")+"-"+record.get("AppName")+"-"+record.get("ReleaseVersion")})
-	records.each { key,value ->
-		println "$key : $value"
-	}
+
+	def Output_Headers="AppID,AppName,ReleaseVersion,EnvironmentsPassed,EnvironmentFailed,Comments"
 	File file = new File("${WORKSPACE}\\Output.csv")
 	file.text = ''
 	file.append(Output_Headers)
@@ -19,6 +17,7 @@ def call() {
 	List<CSVRecord> FailedList;
 	def Spliter=","
 	def Comments="NA";
+	
 	for (Map.Entry<String, List<CSVRecord>> entry : result.entrySet()) {
 		def failedEnvList="NA";
 		def passedEnvList="NA";
@@ -41,4 +40,5 @@ def call() {
 		file.append("\n")
 		file.append(buildList.get(0).get("AppID") + Spliter + (buildList.get(0).get("AppName")) + Spliter + buildList.get(0).get("ReleaseVersion") + Spliter + passedEnvList + Spliter +failedEnvList + Spliter + Comments)
 	}
+	println file.text
 }
