@@ -11,7 +11,7 @@ def call() {
 	records.each { key,value ->
 		println "$key : $value"
 	}
-	File file = new File("output.csv")
+	File file = new File("D:\\Jenkins\\Jenkins\\workspace\\Pipeline-CSVReader\\output.csv")
 	file.text = ''
 	file.append(Output_Headers)
 
