@@ -27,7 +27,15 @@ println "********************************"
 for (Map.Entry<String, List<CSVRecord>> entry : result.entrySet()) {
 
 	def  buildList = entry.getValue();
-	println buildList.findAll{it.Status.contains("Failed")}.collect{it.Status}
+	def FailedList =  buildList.findAll{it.Status.contains("Failed")}.collect{it.Status}
+	
+	println"$FailedList"
+	
+	if (FailedList != null && failedList.size() > 0) {
+	failedEnvList = failedList.map({mp -> mp.get("Status")}).collect(Collectors.joining("|"));
+	}
+	
+	println $failedEnvList"
 
 	}
 
