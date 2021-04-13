@@ -24,7 +24,9 @@ result.each { key,value ->
 println "********************************"
 
 for (Map.Entry<String, List<CSVRecord>> entry : result.entrySet()) {
-	println "$(entry.getKey())"
+
+	def FinalList=entry.getKey();
+	println "$FinalList"
 	}
 
   }
