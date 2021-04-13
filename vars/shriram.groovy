@@ -30,19 +30,8 @@ for (Map.Entry<String, List<CSVRecord>> entry : result.entrySet()) {
 	List<CSVRecord> PassedList= buildList.findAll{f -> !f.get("Status").contains("Failed")}.collect{it.Status}
 	List<CSVRecord> FailedList =  buildList.findAll{it.Status.contains("Failed")}.collect{it.Status}
 	
-	//def passedEnvList = NA1;
-	//def failedEnvList = NA2;
-if (PassedList != null && PassedList.size() > 0) {
-		//def passedEnvList = PassedList.get("Environment").join('|')
-		def passedEnvList = PassedList.map({mp -> mp.get("Environment")}).join("|")
-	}
-	if (FailedList != null && FailedList.size() > 0) {
-		//def failedEnvList = FailedList.get("Status").join('|')
-		 def failedEnvList = FailedList.map({mp -> mp.get("Status")}).join("|")
-	}
-	//def FFF=FailedList.join('|')
-	println"$passedEnvList"
-	println "$failedEnvList"
+	println"$PassedList"
+	println "$FailedList"
 	
 	//println "$failedEnvList"
 
