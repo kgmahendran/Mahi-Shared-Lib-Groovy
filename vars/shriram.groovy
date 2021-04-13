@@ -18,7 +18,7 @@ def result = records.groupBy({it.AppID}, {it.AppName}, {it.ReleaseVersion})
 println "++++++++++++++++++++++++++++++++++++++++"
 
 result.each { entry ->
-		List<CSVRecord> buildList = entry.getValue();
+		def buildList = entry.getValue();
 		def FailedList=buildList.findAll.({f -> f.get(Status).contains("Failed")})
 		println $FailedList
 }
