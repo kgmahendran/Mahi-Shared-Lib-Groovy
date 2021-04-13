@@ -40,5 +40,7 @@ def call() {
 		file.append("\n")
 		file.append(buildList.get(0).get("AppID") + Spliter + (buildList.get(0).get("AppName")) + Spliter + buildList.get(0).get("ReleaseVersion") + Spliter + passedEnvList + Spliter +failedEnvList + Spliter + Comments)
 	}
+	println "+++++++++++++ Output ++++++++++++"
 	println file.text
+	println "+++++++++++++++++++++++++++++++"
 }
