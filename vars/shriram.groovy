@@ -20,4 +20,15 @@ println "++++++++++++++++++++++++++++++++++++++++"
 result.each { key,value ->
 		println "$key : $value"
 }
+
+println "********************************"
+
+for (Map.Entry<String, List<CSVRecord>> entry : result.entrySet()) {
+
+	List<CSVRecord> buildList = entry.getValue();
+	
+	def FailedList=buildList.findAll { it.contains("Failed")}
+	
+	println "$FailedList"
+
   }
