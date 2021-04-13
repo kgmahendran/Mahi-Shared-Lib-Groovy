@@ -13,12 +13,11 @@ records.each { key,value ->
 
 println "++++++++++++++++++++++++++++++++++++++++"
 
-def GRP_1 = records.groupBy({it.AppID})
-def GRP_2=GRP_1.groupBy({it.AppName})
-def FINAL_GRP=GRP_2.groupBy({it.ReleaseVersion})
+def result = records.groupBy({it.AppID}:{it.AppName}:{it.ReleaseVersion})
+
 println "++++++++++++++++++++++++++++++++++++++++"
 
-result.FINAL_GRP { key,value ->
+result.each { key,value ->
 		println "$key : $value"
 }
 
