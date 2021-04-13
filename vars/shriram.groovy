@@ -3,9 +3,9 @@ def call() {
 
 def CSVcontent = readCSV file: 'Input.csv'''
 
-def str=CSVcontent.split(',')
+//def str=CSVcontent.split(',')
 
-def APPID=str[0]
+//def APPID=str[0]
 
-println "$APPID"
+println "$CSVcontent"
   }
