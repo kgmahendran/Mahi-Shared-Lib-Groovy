@@ -37,20 +37,15 @@ for (Map.Entry<String, List<CSVRecord>> entry : result.entrySet()) {
 	println"$PassedList"
 	println "---------------------Failed-----------------------------"
 	println "$FailedList"
-	if (PassedList != null) {
+	if (PassedList != null && PassedList.size() > 0) {
 		 def arrr = PassedList.collect{it.Environment}
 		passedEnvList = arrr.join('|')
 	}
-	else{
-	passedEnvList="NA";
-	}
-	if (FailedList != null) {
+	if (FailedList != null && FailedList.size() > 0) {
 		 def arrr1 = FailedList.collect{it.Environment}
 		failedEnvList = arrr1.join('|')
 	}
-		else{
-	failedEnvList="NA";
-	}
+
 	
 	println "+++++++++++++++++++++++++++"
 	println "$passedEnvList"
