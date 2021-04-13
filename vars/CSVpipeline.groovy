@@ -11,7 +11,7 @@ def call() {
 	records.each { key,value ->
 		println "$key : $value"
 	}
-	File file = new File("WOR_DIR\\Output.csv")
+	File file = new File("${WORKSPACE}\\Output.csv")
 	file.text = ''
 	file.append(Output_Headers)
 
