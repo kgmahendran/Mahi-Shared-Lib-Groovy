@@ -8,4 +8,5 @@ def records = readCSV file: 'D:\\Demo-Pipeline\\CSV-Jenkins'
 
 println "$records[0]"
 println "$records.get(0)"
+println "$records.get()"
   }
