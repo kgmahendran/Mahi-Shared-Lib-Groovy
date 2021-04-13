@@ -13,7 +13,7 @@ records.each { key,value ->
 
 println "++++++++++++++++++++++++++++++++++++++++"
 
-def result = records.groupBy({it.AppID}:{it.AppName}:{it.ReleaseVersion})
+def result = records.groupBy({it.AppID},{it.AppName},{it.ReleaseVersion})
 
 println "++++++++++++++++++++++++++++++++++++++++"
 
