@@ -27,7 +27,7 @@ println "********************************"
 for (Map.Entry<String, List<CSVRecord>> entry : result.entrySet()) {
 
 	def  buildList = entry.getValue();
-	println buildList.findAll{it.Status.contains("Failed")}
+	println buildList.findAll{it.Status.contains("Failed")}.collect{it.Status}
 
 	}
 
