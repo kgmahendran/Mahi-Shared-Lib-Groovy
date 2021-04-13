@@ -2,7 +2,7 @@
 import org.apache.commons.csv.*
 import org.jenkinsci.plugins.*
 import java.util.stream.*
-@NonCPS
+
 def call() {
 
 
@@ -23,7 +23,7 @@ result.each { key,value ->
 }
 
 println "********************************"
-
+@NonCPS
 for (Map.Entry<String, List<CSVRecord>> entry : result.entrySet()) {
 
 	List<CSVRecord> buildList = entry.getValue();
