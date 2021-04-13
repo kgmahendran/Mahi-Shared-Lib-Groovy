@@ -1,6 +1,5 @@
 #!/usr/bin/env groovy
 import org.apache.commons.csv.*
-@NonCPS
 def call() {
 
 
