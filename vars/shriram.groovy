@@ -27,11 +27,11 @@ println "********************************"
 for (Map.Entry<String, List<CSVRecord>> entry : result.entrySet()) {
 
 	def  buildList = entry.getValue();
+	def PasedList= buildList.findAll{f -> !f.get("Status").contains("Failed")}.collect{it.Status}
 	def FailedList =  buildList.findAll{it.Status.contains("Failed")}.collect{it.Status}
 	def FFF=FailedList.join('|')
-	
 	println"$FFF"
-	
+	println "$PasedList"
 	
 	//println "$failedEnvList"
 
