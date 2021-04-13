@@ -25,8 +25,8 @@ result.each { key,value ->
 println "********************************"
 List<CSVRecord> PassedList;
 List<CSVRecord> FailedList;
-def failedEnvList=NA;
-def passedEnvList=NA'
+def failedEnvList="NA";
+def passedEnvList="NA";
 for (Map.Entry<String, List<CSVRecord>> entry : result.entrySet()) {
    
 	def  buildList = entry.getValue();
