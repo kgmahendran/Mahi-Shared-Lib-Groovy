@@ -17,9 +17,8 @@ def result = records.groupBy({it.AppID}+"-"+{it.AppName} + "-"+{it.ReleaseVersio
 
 println "++++++++++++++++++++++++++++++++++++++++"
 
-result.each { key,value
-
-println "$key        :       $value"
+result.each { key,value ->
+		println "$key : $value"
 }
 
 println "********************************"
