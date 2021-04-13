@@ -2,7 +2,6 @@
 import org.apache.commons.csv.*
 import org.jenkinsci.plugins.*
 import java.util.stream.*
-@NonCPS
 def call() {
 
 
@@ -18,20 +17,13 @@ def result = records.groupBy({it.AppID}, {it.AppName}, {it.ReleaseVersion})
 
 println "++++++++++++++++++++++++++++++++++++++++"
 
-result.each { key,value ->
-		println "$key : $value"
+result.each { entry ->
+		List<CSVRecord> buildList = entry.getValue();
+		def FailedList=buildList.findAll.({f -> f.get(Status).contains("Failed")})
+		println $FailedList
 }
 
 println "********************************"
 
-for (Map.Entry<String, List<CSVRecord>> entry : result.entrySet()) {
-
-	List<CSVRecord> buildList = entry.getValue();
-	
-	def FailedList=buildList.findAll { it.contains("Failed")}
-	
-	println "$FailedList"
-
-  }
   
   }
