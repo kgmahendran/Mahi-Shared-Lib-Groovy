@@ -9,7 +9,6 @@ def call() {
 	def Output_Headers="AppID,AppName,ReleaseVersion,EnvironmentsPassed,EnvironmentFailed,Comments"
 
 	File file = new File("$WORKSPACE\\output.csv")
-	file.text = ''
 	file.append(Output_Headers)
 
 	List<CSVRecord> Status_Passed;
