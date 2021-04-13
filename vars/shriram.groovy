@@ -33,9 +33,9 @@ for (Map.Entry<String, List<CSVRecord>> entry : result.entrySet()) {
 	PassedList= buildList.findAll{f -> !f.get("Status").contains("Failed")}
 	FailedList =  buildList.findAll{it.Status.contains("Failed")}
 	
-	println "---------------------Passed-----------------------------"
-	println"$PassedList"
-	println "---------------------Failed-----------------------------"
+	//println "---------------------Passed-----------------------------"
+	//println"$PassedList"
+	//println "---------------------Failed-----------------------------"
 	println "$FailedList"
 	if (PassedList != null && PassedList.size() > 0) {
 		 def arrr = PassedList.collect{it.Environment}
@@ -47,10 +47,15 @@ for (Map.Entry<String, List<CSVRecord>> entry : result.entrySet()) {
 	}
 
 	
-	println "+++++++++++++++++++++++++++"
-	println "$passedEnvList"
-	println "$failedEnvList"
-	println "+++++++++++++++++++++++++++"
+	//println "+++++++++++++++++++++++++++"
+	//println "$passedEnvList"
+	//println "$failedEnvList"
+	//println "+++++++++++++++++++++++++++"
+	
+	File file = new File("D:\\Demo-Pipeline\\CSV-Jenkins\\output.csv")
+	file.append(buildList.get(0).get("AppID"))
 	}
+	
+	
 
   }
