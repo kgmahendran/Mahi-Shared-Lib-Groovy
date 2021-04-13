@@ -39,12 +39,12 @@ for (Map.Entry<String, List<CSVRecord>> entry : result.entrySet()) {
 	println "$FailedList"
 	
 if (PassedList != null && PassedList.size() > 0) {
-		 passedEnvList = PassedList.each{it.Environment}.join('|')
-		//def passedEnvList = PassedList.map({mp -> mp.get("Environment")}).join("|")
+		 passedEnvList = PassedList.each{mp -> mp.get("Environment".join('|')}
+		
 	}
 	if (FailedList != null && FailedList.size() > 0) {
 	
-		failedEnvList = FailedList.each{it.Environment}.join('|')
+		failedEnvList = FailedList.each{mp -> mp.get("Environment".join('|')}
 		//def failedEnvList = FailedList.get("Status").join('|')
 		 //def failedEnvList = FailedList.map({mp -> mp.get("Status")}).join("|")
 	}
