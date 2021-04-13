@@ -23,10 +23,8 @@ result.each { key,value ->
 
 println "********************************"
 
-result.each { entry ->
-		def buildList = entry.getValue();
-		def FailedList=buildList.findAll({f -> f.get(Status).conatins("Failed")})
-		println "$FailedList"
-}
+for (Map.Entry<String, List<CSVRecord>> entry : result.entrySet()) {
+	System.out.println(entry.getKey());
+	}
 
   }
