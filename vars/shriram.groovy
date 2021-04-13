@@ -4,9 +4,9 @@ import org.jenkinsci.plugins.*
 def call() {
 
 
-def records = readCSV file: 'D:\\Demo-Pipeline\\CSV-Jenkins' 
+//def records = readCSV file: 'D:\\Demo-Pipeline\\CSV-Jenkins' 
 
-println "$records[0]"
-println "$records.get(0)"
-println "$records.get()"
-  }
+readFile("D:\\Demo-Pipeline\\CSV-Jenkins").split('\n').each ({ line, count ->
+
+print $count  $line
+  })
