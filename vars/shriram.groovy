@@ -6,7 +6,7 @@ def call() {
 
 //def records = readCSV file: 'D:\\Demo-Pipeline\\CSV-Jenkins' 
 
-readFile("D:\\Demo-Pipeline\\CSV-Jenkins").split('\n').each ({ line, count ->
+readFile("D:\\Demo-Pipeline\\CSV-Jenkins").split('\n').each { line, count ->
 
-print $count  $line
-  })
+println $count  $line
+  }
