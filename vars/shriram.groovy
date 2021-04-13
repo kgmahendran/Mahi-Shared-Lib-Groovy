@@ -18,8 +18,7 @@ def result = records.groupBy({it.AppID}, {it.AppName}, {it.ReleaseVersion})
 println "++++++++++++++++++++++++++++++++++++++++"
 
 result.each { entry ->
-		def buildList = entry.getValue();
-		def FailedList=buildList.findAll.({f -> f.get(Status).contains("Failed")})
+		def FailedList = entry.getValue().findAll.({f -> f.get(Status).contains("Failed")})
 		println $FailedList
 }
 
