@@ -28,12 +28,11 @@ result.each { key,value ->
 println "********************************"
 List<CSVRecord> PassedList;
 List<CSVRecord> FailedList;
-def failedEnvList="NA";
-def passedEnvList="NA";
 def Spliter=","
 def Comments="NA";
 for (Map.Entry<String, List<CSVRecord>> entry : result.entrySet()) {
-   
+    def failedEnvList="NA";
+   def passedEnvList="NA";
 	def  buildList = entry.getValue();
 	PassedList= buildList.findAll{f -> !f.get("Status").contains("Failed")}
 	FailedList =  buildList.findAll{it.Status.contains("Failed")}
