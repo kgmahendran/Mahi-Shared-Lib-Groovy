@@ -1,0 +1,30 @@
+Team,
+ 
+I had successfully migrated the SVN-To-GIT for below SVN Repository.
+https://<SVN_URL>/REPO
+
+Clone:
+
+svn checkout https://<SVN_URL>/REPO  --username=XXXX -password=XXXX
+
+ Steps To Be Follow:
+
+It required the SVN-GIT utility with the help of we can migrate the SVN Repository.
+
+NOTE : All commands should be execute using GIT BASH
+
+Step 1: Get the authors list from existing SVN Repository using below command.
+
+svn log -q | awk -F '|' '/^r/ {sub("^ ", "", $2); sub(" $", "", $2); print $2" = "$2" <"$2">"}' | sort -u > authors.txt
+
+ 
+Step 2:  Below command will create new empty .git repo
+
+git svn clone --trunk=/trunk --branches=/branches  --branches=/bugfixes --tags=/tags --authors-file=authors.txt  https://<SVN_URL>/REPO XXXXXX
+
+For XXXXXXX  -- replace the repository name.
+
+Step 3: checkout to new empty repo as u mentioned using   ( cd XXXXXXX) and Clone the SVN Repo using below command.
+
+git svn clone https://<SVN_URL>/REPO
+
