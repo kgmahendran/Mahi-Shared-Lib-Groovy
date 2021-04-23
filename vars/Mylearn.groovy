@@ -2,7 +2,7 @@ def call(){
 
 		def inputJson = readJSON file: 'ARMTem.json'
 		inputJson.resources.each{it.put("condition","false")}
-		inputJson.resources.name.each{println it}
+		//inputJson.resources.name.each{println it}
 		def Read_Deploy_project = readProperties file: 'Deploy_List.properties'
 		def KEY_NAME = Read_Deploy_project.keySet();
 		for (def i=0;i<KEY_NAME.size();i++)
