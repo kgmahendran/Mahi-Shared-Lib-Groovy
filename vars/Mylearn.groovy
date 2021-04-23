@@ -10,7 +10,7 @@ def call(){
 			def KEY_VALUES = Read_Deploy_project["${KEY_NAME[i]}"].split(',')
 			for (def j=0;j<=KEY_VALUES.size();j++)
 				{
-				inputJson.resources.each{
+				inputJson.resources.findAll{
 					//println (it.name("${KEY_NAME[j]}")
 					if (it.name.contains("storageAccountName") && it.type.contains("storageAccounts"))
 						{
