@@ -13,7 +13,7 @@ def call(){
 				{
 				inputJson.resources.findAll{
 					//println (it.name("${KEY_NAME[j]}")
-					if (it.name.contains("${KEY_NAME[j]}") && it.type.contains("${KEY_NAME[i]}"))
+					if (it.name.contains("${KEY_VALUES[j]}") && it.type.contains("${KEY_NAME[i]}"))
 						{
 						echo "Test"
 						it.put("condition","true")
