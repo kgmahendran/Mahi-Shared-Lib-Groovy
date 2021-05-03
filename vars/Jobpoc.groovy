@@ -15,6 +15,7 @@ def call() {
 		
 		def  buildList = entry.getValue();
 		buildList.each{println it.jobName}
+		println "------------Iteration---------------"
 	 
 	 //println (buildList.getValue("jobName"))
 	 
