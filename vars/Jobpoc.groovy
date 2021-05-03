@@ -13,9 +13,8 @@ def call() {
 
 	for (Map.Entry<String, List<CSVRecord>> entry : result.entrySet()) {
 		
-	 def  buildList = entry.getValue("jobName");
-	 
-	 println "$buildList"
+		def  buildList = entry.getValue();
+		println (buildList.get("jobName"))
 	 
 	 //println (buildList.getValue("jobName"))
 	 
