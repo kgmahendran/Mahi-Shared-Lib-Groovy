@@ -1,4 +1,10 @@
 #!/usr/bin/env groovy
+
+                script {
+                    def job = jenkins.model.Jenkins.instance.getItemByFullName("Job name")
+                    def result = job.getLastBuild().getResult().toString()
+                    env.result = result
+                }
 import org.apache.commons.csv.*
 import org.jenkinsci.plugins.*
 
