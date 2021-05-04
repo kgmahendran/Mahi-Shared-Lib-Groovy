@@ -21,10 +21,10 @@ def call() {
 		for (def i=0;i<JOB_LIST.size();i++)
 		{
 			if ( "${CHECK_DEP[i]}" ==  "YES" ) {
-			build_info=build job: ""+JOB_LIST[i]+""
+			build_info=build job: ""+JOB_LIST[i]+"" , parameters: [[$class: 'StringParameterValue', name: 'Build_Number', value: env.BUILD_NUMBER, propagate:false]]
 			def DEP_RES=build_info.result
 			if ( "${DEP_RES}" == "SUCCESS" ) {
-			build_info=build job: ""+DEP_LIST[i]+""
+			build_info=build job: ""+DEP_LIST[i]+"", parameters: [[$class: 'StringParameterValue', name: 'Build_Number', value: env.BUILD_NUMBER, propagate:false]]
 			}
 			}
 		
