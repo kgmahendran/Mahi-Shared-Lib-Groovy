@@ -14,29 +14,21 @@ def call() {
 	for (Map.Entry<String, List<CSVRecord>> entry : result.entrySet()) {
 		
 		def  buildList = entry.getValue();
-		buildList.each{println it.jobName}
-		println "------------Iteration---------------"
-	 
-	 //println (buildList.getValue("jobName"))
-	 
+		def JOB_LIST=buildList.jobName
+		def CHECK_DEP=buildList.IsDepndent
+		def DEP_LIST=buildList.Dependent_Jobs
+		for (def i=0;i<JOB_LIST.size();i++)
+		{
+			if ( "${CHECK_DEP[i]}" ==  "YES" ) {
+			build_info=build job: ""+JOB_LIST[i]+""
+			def DEP_RES=build_info.result
+			if ( "${DEP_RES}" == "SUCCESS" ) {
+			build_info=build job: ""+DEP_LIST[i]+""
+			}
+			}
+		
+		}
 	}
 	 
-	 /*8PassedList= buildList.findAll{f -> !f.get("Status").contains("Failed")}
-	 FailedList =  buildList.findAll{it.Status.contains("Failed")}
-	 if (PassedList != null && PassedList.size() > 0) {
-	 def arrr = PassedList.collect{it.Environment}
-	 passedEnvList = arrr.join('|')
-	 Comments="Passed";
-	 }
-	 if (FailedList != null && FailedList.size() > 0) {
-	 def arrr1 = FailedList.collect{it.Environment}
-	 failedEnvList = arrr1.join('|')
-	 Comments="Failed";
-	 }
-	 file.append("\n")
-	 file.append(buildList.get(0).get("AppID") + Spliter + (buildList.get(0).get("AppName")) + Spliter + buildList.get(0).get("ReleaseVersion") + Spliter + passedEnvList + Spliter +failedEnvList + Spliter + Comments)
-	 }
-	 println "+++++++++++++ Output ++++++++++++"
-	 println file.text
-	 println "+++++++++++++++++++++++++++++++"*/
+
 }
