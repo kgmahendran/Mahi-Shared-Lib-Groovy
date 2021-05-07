@@ -1,2 +1,11 @@
 
 https://github.com/akashkrkashyap/jenkins-pipeline-examples/tree/master/jenkins-jobs/pipeline-triggers-upstream
+
+CI/CD: DB
+https://docs.microsoft.com/en-us/azure/devops/pipelines/targets/azure-sqldb?view=azure-devops&tabs=yaml
+https://chrisadkin.io/2017/04/25/creating-self-building-sql-server-data-tools-pipelines-using-jenkins-and-git/
+
+
+https://sqlrelease.com/continuous-integration-and-continuous-deployment-ci-cd-sql-server-database-ci-part-1
+https://sqlrelease.com/continuous-integration-and-continuous-deployment-ci-cd-sql-server-database-cd-part-2
+
